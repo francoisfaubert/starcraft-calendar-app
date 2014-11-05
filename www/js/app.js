@@ -17,7 +17,7 @@ angular.module('sccal', ['ionic'])
           StatusBar.styleDefault();
         }
     });
-});
+})
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
