@@ -19,6 +19,10 @@ angular.module('sccal', ['ionic'])
     });
 });
 
+.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+});
+
 
 var sccal = angular.module('sccal', ['ionic']);
 sccal.controller('EventsController', function($scope, $http) {
