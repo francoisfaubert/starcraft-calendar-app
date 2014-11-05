@@ -1,5 +1,5 @@
 {
-  "name": "StarCraft II Calendar",
+  "name": "starcraft-calendar-app",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",

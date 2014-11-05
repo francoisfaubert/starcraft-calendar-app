@@ -1,4 +1,4 @@
-== Ionic details
+==Ionic details
 
  * cd into your project: $ cd myApp
 

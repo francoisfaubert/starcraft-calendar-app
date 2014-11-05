@@ -1,5 +1,5 @@
 {
-  "name": "Starcraft Calendar App",
+  "name": "starcraft-calendar-app",
   "version": "1.0.0",
   "description": "An app that keeps you updated on the latest Starcraft II events and results.",
   "dependencies": {
