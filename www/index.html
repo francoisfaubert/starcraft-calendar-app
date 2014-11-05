@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Starcraft II Calendar</title>
+
+        <!-- compiled css output -->
+        <link href="css/ionic.app.css" rel="stylesheet">
+
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+
+        <!-- your app's js -->
+        <script src="js/app.js"></script>
+    </head>
+    <body ng-app="sccal">
+        <ion-pane>
+            <ion-header-bar class="bar-stable">
+                <h1 class="title">Starcraft II Calendar</h1>
+            </ion-header-bar>
+
+            <ion-content>
+                <ion-slide-box>
+                    <ion-slide>
+                        <div class="box scores">
+                            <ion-content ng-controller="SeriesController">
+                                <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+                                <ion-list>
+                                    <h2 class="title">Results</h2>
+                                    <ion-item ng-repeat="serie in series">
+
+
+                                        <div class="player1">
+                                            <div class="name">{{serie.player1}}</div>
+                                            <div class="score-box">{{serie.player1_score}}</div>
+                                        </div>
+                                        <div class="vs">
+                                            <p>- VS -</p>
+                                            <p>{{serie.name}} (<span>{{serie.start_date_utc | date:"medium"}}</span>)</p>
+                                        </div>
+                                        <div class="player2">
+                                            <div class="name">{{serie.player2}}</div>
+                                            <div class="score-box">{{serie.player2_score}}</div>
+                                        </div>
+                                        <p>
+                                        </p>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-content>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box events">
+                            <ion-content ng-controller="EventsController">
+                                <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+                                <ion-list>
+                                    <h2 class="title">Schedule</h2>
+                                    <ion-item ng-repeat="event in events">
+
+                                        <div class="calendar">
+                                            <span>{{event.start_date_utc | date:"EEEE"}}</span>
+                                            <span>{{event.start_date_utc | date:"d"}}</span>
+                                            <span>{{event.start_date_utc | date:"MMMM"}}</span>
+                                        </div>
+
+                                        <h2>
+                                            <span>{{event.start_date_utc | date:"h:mm:ss a"}}</span>
+                                            {{event.name}}
+                                        </h2>
+
+                                    </ion-item>
+                                </ion-list>
+                            </ion-content>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box about">
+                            <h1>Hello</h1>
+
+                            <p>Thanks for using the StarCraft calendar app! If you have any questions or comments, contact me on Twitter: <a href="https://twitter.com/francoisfaubert">@francoisfaubert</a>.</p>
+
+                            <h4>Adding to calendar apps</h4>
+                            <p>If you want to add the event information to your calendar app, use the following links:</p>
+                            <ul>
+                                <li><a href="http://starcraftcalendar.francoisfaubert.com/calendar/sc2/events.ics">Event schedule</a></li>
+                                <li><a href="http://starcraftcalendar.francoisfaubert.com/calendar/sc2/scores.ics">Latest scores</a></li>
+                            </ul>
+
+                            <h4>API</h4>
+                            <p>The feeds used to gather this information is located at <a href="http://starcraftcalendar.francoisfaubert.com/">starcraftcalendar.francoisfaubert.com</a>. It offers public apis of data found on <a href="http://wcs.battle.net/">wcs.battle.net</a>.</p>
+                            <p>Are you a developer? fork <a href="https://github.com/francoisfaubert/starcraft-calendar-app">this application</a> or the <a href="https://github.com/francoisfaubert/starcraft-calendar">api</a> on GitHub.</p>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </ion-content>
+        </ion-pane>
+    </body>
+</html>
