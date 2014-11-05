@@ -7814,22 +7814,3 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .platform-c:not(.enable-transitions) * {
   -webkit-transition: none !important;
   transition: none !important; }
-
-.slider .box {
-  min-height: 800px;
-  padding: 0 1em; }
-
-.scores .player1, .scores .player2, .scores .vs {
-  display: inline-block;
-  font-size: 25px;
-  text-align: center;
-  line-height: 1;
-  width: 33%; }
-.scores .vs {
-  color: #333;
-  font-size: 15px; }
-.scores .score-box {
-  font-size: 35px;
-  padding: 0.5em 0; }
-.scores .name {
-  color: #333333; }

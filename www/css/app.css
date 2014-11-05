@@ -1,0 +1,61 @@
+body {
+  background: #040e1e; }
+
+.scroll, .slider {
+  height: 100%; }
+  .scroll .box, .slider .box {
+    padding: 0 1em; }
+
+.bar.bar-stable {
+  background: #06152c;
+  border-bottom: 1px solid #000; }
+  .bar.bar-stable .title {
+    color: #fff;
+    opacity: 0.8; }
+
+.list {
+  background: #cdd0d3; }
+  .list h2.title {
+    background: #cdd0d3;
+    font-size: 20px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 1em; }
+
+.scores .player1, .scores .player2, .scores .vs {
+  display: inline-block;
+  font-size: 25px;
+  text-align: center;
+  line-height: 1;
+  width: 33%; }
+.scores .vs {
+  color: #333;
+  font-size: 15px; }
+.scores .score-box {
+  font-size: 45px;
+  padding: 0.5em 0; }
+.scores .winning {
+  color: #000; }
+.scores .losing {
+  color: #ccc; }
+
+.events .calendar {
+  border: 1px solid #dedede;
+  display: block;
+  float: left;
+  font-weight: bold;
+  padding: 0.2em;
+  margin: 0 0.5em;
+  text-align: center;
+  min-width: 100px; }
+  .events .calendar span {
+    display: block;
+    font-size: 12px; }
+  .events .calendar .number {
+    font-size: 45px;
+    margin: 0.2em; }
+  .events .calendar .hour {
+    background-color: #244d83;
+    color: #fff; }
+.events h2 {
+  margin-top: 1em; }

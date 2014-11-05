@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('sccal', ['ionic'])
+angular.module('sccal', ['ionic', 'controllers.events'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -17,14 +17,10 @@ angular.module('sccal', ['ionic'])
           StatusBar.styleDefault();
         }
     });
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
 });
 
-
 var sccal = angular.module('sccal', ['ionic']);
+
 sccal.controller('EventsController', function($scope, $http) {
 
     function getRemoteItems() {
@@ -40,9 +36,12 @@ sccal.controller('EventsController', function($scope, $http) {
 
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
+    $scope.formatTitle = function(str) {
+        return str.replace(' (', '\n(');
+    }
+
     getRemoteItems();
 });
-
 
 sccal.controller('SeriesController', function($scope, $http) {
 
@@ -59,5 +58,10 @@ sccal.controller('SeriesController', function($scope, $http) {
 
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
+    $scope.hasWon = function(score1, score2) {
+        return (score1 > score2) ? "winning" : "losing";
+    }
+
     getRemoteItems();
 });
+

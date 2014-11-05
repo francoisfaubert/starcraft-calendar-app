@@ -20,33 +20,3 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-.slider .box {
-    min-height:800px;
-    padding:0 1em;
-}
-
-.scores {
-
-    .player1, .player2, .vs {
-        display: inline-block;
-        font-size: 25px;
-        text-align: center;
-        line-height: 1;
-        width: 33%;
-    }
-
-    .vs {
-        color: #333;
-        font-size: 15px;
-    }
-
-    .score-box {
-        font-size: 35px;
-        padding: 0.5em 0;
-    }
-
-    .name {
-        color:#333333;
-    }
-}
