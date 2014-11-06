@@ -1,40 +1,22 @@
-body {
-  background: #040e1e;
-  color: #333; }
-
 a {
   color: #226ba2; }
 
-.scroll, .slider {
-  background: #fafafa;
-  height: 100%; }
-  .scroll .box, .slider .box {
-    padding: 0 1em; }
-
-.bar.bar-stable {
-  background: #06152c;
-  border-bottom: 1px solid #020914;
+.bar-header {
+  background: #3a2d72;
+  border-bottom: 1px solid #291c47;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); }
-  .bar.bar-stable .title {
+  .bar-header h1 {
     color: #fff; }
 
 .bar-footer {
   background: #e1e9f4;
-  border-top: 1px solid #fff;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); }
+  border-top: 1px solid #fff; }
 
-h2.title {
-  background: #385278;
-  border-top: 1px solid #4b658c;
-  border-left: 1px solid #4b658c;
-  border-right: 1px solid #020914;
-  border-bottom: 1px solid #020914;
-  margin: 0;
-  font-size: 14px;
-  color: #fff;
-  padding: 10px 15px; }
+.pane {
+  background: #efefef; }
 
 .card {
+  background: #fff;
   padding: 0;
   margin: 1em;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
@@ -44,32 +26,35 @@ h2.title {
     color: #333;
     font-size: 12px;
     padding: 0; }
-    .card .head .event {
-      text-align: right; }
+  .card .event {
+    text-align: right; }
+    .card .event .started {
+      color: #666;
+      margin-right: 1em; }
   .card .body {
     margin-top: 0.5em; }
   .card .vs {
     padding-top: 57px; }
 
-.scores .player1, .scores .player2, .scores .vs {
+.results .player1, .results .player2, .results .vs {
   display: inline-block;
   font-size: 25px;
   text-align: center;
   line-height: 1;
   width: 33%; }
-.scores .vs {
+.results .vs {
   color: #333;
   font-size: 15px; }
-.scores .score-box {
+.results .score-box {
   font-size: 45px;
   padding: 0.5em 0; }
-.scores .winning {
-  color: #000; }
-.scores .losing {
+.results .winning {
+  color: #3a2d72; }
+.results .losing {
   color: #666; }
 
 .events .calendar {
-  border: 1px solid #244d83;
+  border: 1px solid #3a2d72;
   display: block;
   padding: 0.2em;
   margin: 0.2em 1em 0.2em 0.2em;
@@ -84,18 +69,16 @@ h2.title {
     font-size: 40px;
     margin: 0.2em; }
   .events .calendar .hour {
-    background-color: #244d83;
+    background-color: #3a2d72;
     color: #fff;
     font-weight: bold; }
 
-.about-page {
-  padding: 1em; }
-  .about-page .header {
-    background: #fff;
-    border: 1px solid #dedede;
-    border-top: #ccc;
-    padding: 1em;
-    margin-bottom: 2em; }
-    .about-page .header .lead {
-      font-size: 1.5em;
-      line-height: 1; }
+.about .header {
+  background: #fff;
+  border: 1px solid #dedede;
+  border-top: #ccc;
+  padding: 1em;
+  margin-bottom: 2em; }
+  .about .header .lead {
+    font-size: 1.5em;
+    line-height: 1; }

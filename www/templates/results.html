@@ -1,0 +1,25 @@
+<ion-view title="Recent Results">
+    <ion-content has-header="true" padding="true" ng-controller="SeriesController" class="results">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+        <div class="card" ng-repeat="serie in series">
+            <div class="row head">
+                <div class="col name">{{serie.name}}</div>
+                <div class="col event">
+                    <span class="started">@ {{serie.start_date_utc | date:"medium"}}</span>
+                    <span class="updated">Updated : {{serie.updated_at | date:"medium"}}</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div class="col player1 {{hasWon(serie.player1_score, serie.player2_score)}}">
+                    <div class="name">{{serie.player1}}</div>
+                    <div class="score-box">{{serie.player1_score}}</div>
+                </div>
+                <div class="col vs">- VS -</div>
+                <div class="col player2 {{hasWon(serie.player2_score, serie.player1_score)}}">
+                    <div class="name">{{serie.player2}}</div>
+                    <div class="score-box">{{serie.player2_score}}</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('sccal', ['ionic', 'controllers.events'])
+angular.module('sccal', ['ionic'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -17,14 +17,39 @@ angular.module('sccal', ['ionic', 'controllers.events'])
           StatusBar.styleDefault();
         }
     });
-});
+})
 
+.config(function($stateProvider, $urlRouterProvider) {
 
-// Controllers
+  $stateProvider
+    .state('results', {
+      url: "/results",
+      views: {
+        'results': {
+            templateUrl: "templates/results.html"
+        }
+      }
+    })
+    .state('events', {
+      url: "/events",
+      views: {
+        'events': {
+            templateUrl: "templates/events.html"
+        }
+      }
+    })
+    .state('about', {
+      url: "/about",
+      views: {
+        'about': {
+          templateUrl: "templates/about.html"
+        }
+      }
+    });
 
-var sccal = angular.module('sccal', ['ionic']);
-
-sccal.controller('EventsController', function($scope, $http, $sce, $filter) {
+   $urlRouterProvider.otherwise("/results");
+})
+.controller('EventsController', function($scope, $http, $sce, $filter) {
 
     function getRemoteItems() {
         $http.get('http://starcraftcalendar.francoisfaubert.com/api/sc2/events.json')
@@ -64,9 +89,8 @@ sccal.controller('EventsController', function($scope, $http, $sce, $filter) {
     $scope.formatName = formatName;
 
     getRemoteItems();
-});
-
-sccal.controller('SeriesController', function($scope, $http) {
+})
+.controller('SeriesController', function($scope, $http) {
 
     function getRemoteItems() {
         $http.get('http://starcraftcalendar.francoisfaubert.com/api/sc2/scores.json')

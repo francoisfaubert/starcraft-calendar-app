@@ -19,94 +19,17 @@
         <script src="js/app.js"></script>
     </head>
     <body ng-app="sccal">
-        <ion-pane>
-            <ion-header-bar class="bar-stable">
-                <h1 class="title"><i class="ion-calendar"></i> StarCraft II Calendar</h1>
-            </ion-header-bar>
-
-            <ion-content>
-                <ion-slide-box>
-                    <ion-slide>
-                        <div class="box scores">
-                            <ion-content ng-controller="SeriesController">
-                                <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
-                                <h2 class="title">Recent Results</h2>
-                                <div class="card" ng-repeat="serie in series">
-                                    <div class="row head">
-                                        <div class="col name">{{serie.name}}</div>
-                                        <div class="col event">{{serie.start_date_utc | date:"medium"}}</div>
-                                    </div>
-                                    <div class="row body">
-                                        <div class="col player1 {{hasWon(serie.player1_score, serie.player2_score)}}">
-                                            <div class="name">{{serie.player1}}</div>
-                                            <div class="score-box">{{serie.player1_score}}</div>
-                                        </div>
-                                        <div class="col vs">- VS -</div>
-                                        <div class="col player2 {{hasWon(serie.player2_score, serie.player1_score)}}">
-                                            <div class="name">{{serie.player2}}</div>
-                                            <div class="score-box">{{serie.player2_score}}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-content>
-                        </div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box events">
-                            <ion-content ng-controller="EventsController">
-                                <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
-                                <h2 class="title">Schedule</h2>
-                                <div class="card" ng-repeat="event in events">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="calendar">
-                                                <span class="day">{{event.start_date_utc | date:"EEEE"}}</span>
-                                                <span class="number">{{event.start_date_utc | date:"d"}}</span>
-                                                <span class="month">{{event.start_date_utc | date:"MMMM"}}</span>
-                                                <span class="hour">{{event.start_date_utc | date:"h:mm:ss a"}}</span>
-                                            </div>
-                                            <div>{{event.name}}</div>
-                                            <a class="button button-icon icon ion-plus-circled" ng-click="addToCalendar(event)"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-content>
-                        </div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box about">
-                            <ion-content >
-                                <h2 class="title">Hello!</h2>
-                                <div class="about-page">
-                                    <div class="row header">
-                                        <div class="col">
-                                            <p class="lead">Thanks for using the <strong>StarCraft Calendar App</strong>!</p>
-                                            <p>If you have any questions or comments, contact me on Twitter: <a href="https://twitter.com/francoisfaubert">@francoisfaubert</a>.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <h4>Adding to calendar apps</h4>
-                                            <p>If you want to add the event information to your calendar app, use the following links:</p>
-                                            <ul>
-                                                <li><a href="http://starcraftcalendar.francoisfaubert.com/calendar/sc2/events.ics">Event schedule</a></li>
-                                                <li><a href="http://starcraftcalendar.francoisfaubert.com/calendar/sc2/scores.ics">Latest scores</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col">
-                                            <h4>API</h4>
-                                            <p>The feeds used to gather this information is located at <a href="http://starcraftcalendar.francoisfaubert.com/">starcraftcalendar.francoisfaubert.com</a>.</p>
-                                            <p>It offers public apis of data found on <a href="http://wcs.battle.net/">wcs.battle.net</a>.</p>
-                                            <p>Are you a developer? fork <a href="https://github.com/francoisfaubert/starcraft-calendar-app">this application</a> or the <a href="https://github.com/francoisfaubert/starcraft-calendar">api</a> on GitHub.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-content>
-                        </div>
-                    </ion-slide>
-                </ion-slide-box>
-            </ion-content>
-        </ion-pane>
+        <ion-nav-bar></ion-nav-bar>
+        <ion-tabs tabs-style="tabs-icon-bottom" tabs-type="tabs-positive " animation="slide-left-right">
+            <ion-tab title="Results" href="#/results" icon-on="ion-ios7-toggle" icon-off="ion-ios7-toggle-outline">
+                <ion-nav-view name="results"></ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Events" href="#/events" icon-on="ion-ios7-calendar" icon-off="ion-ios7-calendar-outline">
+                <ion-nav-view name="events"></ion-nav-view>
+            </ion-tab>
+            <ion-tab title="About" href="#/about" icon-on="ion-ios7-information" icon-off="ion-ios7-information-outline">
+                <ion-nav-view name="about"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
     </body>
 </html>
