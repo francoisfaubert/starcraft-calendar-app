@@ -19,9 +19,12 @@ angular.module('sccal', ['ionic', 'controllers.events'])
     });
 });
 
+
+// Controllers
+
 var sccal = angular.module('sccal', ['ionic']);
 
-sccal.controller('EventsController', function($scope, $http) {
+sccal.controller('EventsController', function($scope, $http, $sce, $filter) {
 
     function getRemoteItems() {
         $http.get('http://starcraftcalendar.francoisfaubert.com/api/sc2/events.json')
@@ -34,11 +37,31 @@ sccal.controller('EventsController', function($scope, $http) {
         });
     };
 
+    function addToCalendar(event) {
+        try {
+            cordova.plugins.CalendarPlugin.createEvent(
+                event.name,
+                'http://wcs.battle.net/',
+                '',
+                $filter('date')(event.start_date_utc, "fullDate", 'UTC'), // Start date as a timestamp in ms
+                $filter('date')(event.start_date_utc, "fullDate", 'UTC'), // End date as a timestamp in ms
+                false, // Whether it is an all day event or not,
+                function(){}, // function called on success
+                function(){} // function called on error
+            );
+        } catch(e) {
+            console.log("Could not call the cordova plugin.");
+        }
+    };
+
+    function formatName(str) {
+        return $sce.trustAsHtml(str.replace(' (', '<br/>('));
+    };
+
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
-    $scope.formatTitle = function(str) {
-        return str.replace(' (', '\n(');
-    }
+    $scope.addToCalendar = addToCalendar;
+    $scope.formatName = formatName;
 
     getRemoteItems();
 });
@@ -56,12 +79,13 @@ sccal.controller('SeriesController', function($scope, $http) {
         });
     };
 
+    function hasWon(score1, score2) {
+        return (score1 > score2) ? "winning" : "losing";
+    };
+
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
-    $scope.hasWon = function(score1, score2) {
-        return (score1 > score2) ? "winning" : "losing";
-    }
+    $scope.hasWon = hasWon;
 
     getRemoteItems();
 });
-
