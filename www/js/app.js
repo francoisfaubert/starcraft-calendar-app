@@ -16,6 +16,13 @@ angular.module('sccal', ['ionic'])
         if(window.StatusBar) {
           StatusBar.styleDefault();
         }
+
+        if(typeof analytics !== "undefined") {
+            analytics.startTrackerWithId("UA-1624062-6");
+        } else {
+            console.log("Google Analytics Unavailable");
+        }
+
     });
 })
 
@@ -51,6 +58,8 @@ angular.module('sccal', ['ionic'])
 })
 .controller('EventsController', function($scope, $http, $sce, $filter) {
 
+    if(typeof analytics !== "undefined") { analytics.trackView("/events"); }
+
     function getRemoteItems() {
         $http.get('http://starcraftcalendar.francoisfaubert.com/api/sc2/events.json')
         .success(function(newItems) {
@@ -62,6 +71,7 @@ angular.module('sccal', ['ionic'])
         });
     };
 
+    /*
     function addToCalendar(event) {
         try {
             cordova.plugins.CalendarPlugin.createEvent(
@@ -77,6 +87,20 @@ angular.module('sccal', ['ionic'])
         } catch(e) {
             console.log("Could not call the cordova plugin.");
         }
+    }; */
+
+    function addMomentClass(event) {
+        var eventDate = new Date(event.start_date_utc),
+            today = new Date();
+
+        if(eventDate.getDate() === today.getDate() && eventDate.getMonth() === today.getMonth() && eventDate.getYear() === today.getYear()) {
+            return "today";
+        }
+    };
+
+    function toLocalTime(event) {
+        var eventDate = new Date(event.start_date_utc);
+        return eventDate.getTime() + (eventDate.getTimezoneOffset() * 60 * 10000);
     };
 
     function formatName(str) {
@@ -85,12 +109,15 @@ angular.module('sccal', ['ionic'])
 
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
-    $scope.addToCalendar = addToCalendar;
+    //$scope.addToCalendar = addToCalendar;
+    $scope.addMomentClass = addMomentClass;
     $scope.formatName = formatName;
+    $scope.toLocalTime = toLocalTime;
 
     getRemoteItems();
 })
 .controller('SeriesController', function($scope, $http) {
+    if(typeof analytics !== "undefined") { analytics.trackView("/scores"); }
 
     function getRemoteItems() {
         $http.get('http://starcraftcalendar.francoisfaubert.com/api/sc2/scores.json')
@@ -98,7 +125,6 @@ angular.module('sccal', ['ionic'])
             $scope.series = newItems;
         })
         .finally(function() {
-            // Stop the ion-refresher from spinning
             $scope.$broadcast('scroll.refreshComplete');
         });
     };

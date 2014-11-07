@@ -4,14 +4,14 @@
         <div class="card" ng-repeat="event in events">
             <div class="row">
                 <div class="col">
-                    <div class="calendar">
+                    <div class="calendar {{addMomentClass(event)}}">
                         <span class="day">{{event.start_date_utc | date:"EEEE"}}</span>
                         <span class="number">{{event.start_date_utc | date:"d"}}</span>
                         <span class="month">{{event.start_date_utc | date:"MMMM"}}</span>
-                        <span class="hour">{{event.start_date_utc | date:"h:mm:ss a"}}</span>
+                        <span class="hour">{{toLocalTime(event) | date:"h:mm a"}}</span>
                     </div>
-                    <div>{{event.name}}</div>
-                    <a class="button button-icon icon ion-plus-circled" ng-click="addToCalendar(event)"></a>
+                    <div class="name">{{event.name}}</div>
+                    <!-- a class="button button-icon icon ion-plus-circled" ng-click="addToCalendar(event)"></a -->
                 </div>
             </div>
         </div>

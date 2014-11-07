@@ -6,7 +6,8 @@
 // the identifier, the filesystem location
 // or the URL
 var pluginlist = [
-    "fr.smile.cordova.calendar"
+    "fr.smile.cordova.calendar",
+    "https://github.com/danwilson/google-analytics-plugin.git"
 ];
 
 // no need to configure below

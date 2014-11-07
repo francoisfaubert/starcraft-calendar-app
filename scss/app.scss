@@ -32,17 +32,16 @@ a {
         color:#333;
         font-size:12px;
         padding:0;
-
     }
 
-        .event {
-            text-align:right;
+    .event {
+        text-align:right;
 
-            .started {
-                color: #666;
-                margin-right: 1em;
-            }
+        .started {
+            color: #666;
         }
+    }
+
     .body {
         margin-top:0.5em;
     }
@@ -54,9 +53,21 @@ a {
 
 
 .results {
-    .player1, .player2, .vs {
+
+    .body {
+        position:relative;
+    }
+
+    .updated {
+        color:#ccc;
+        font-size:12px;
+        text-align:right;
+        padding: 0.2em 0.5em 0.2em 0.2em;
+    }
+
+    .player1, .player2 {
         display: inline-block;
-        font-size: 25px;
+        font-size: 18px;
         text-align: center;
         line-height: 1;
         width: 33%;
@@ -65,14 +76,16 @@ a {
     .vs {
         color: #333;
         font-size: 15px;
+        position: absolute;
+        width:50px;
+        margin-left:-25px;
+        left:50%;
+        bottom:25%;
     }
 
     .score-box {
-        font-size: 45px;
+        font-size: 35px;
         padding: 0.5em 0;
-    }
-
-    .name {
     }
 
     .winning {
@@ -88,7 +101,7 @@ a {
     .calendar {
         border: 1px solid #3a2d72;
         display: block;
-        padding: 0.2em;
+        padding: 2px;
         margin: 0.2em 1em 0.2em 0.2em;
         float: left;
         text-align: center;
@@ -101,7 +114,7 @@ a {
         }
 
         .number {
-            font-size: 40px;
+            font-size: 35px;
             margin: 0.2em;
         }
 
@@ -110,6 +123,14 @@ a {
             color: #fff;
             font-weight:bold;
         }
+    }
+
+    .today {
+        background: #e9e3fa;
+    }
+
+    .name {
+        padding-top: 1em;
     }
 }
 

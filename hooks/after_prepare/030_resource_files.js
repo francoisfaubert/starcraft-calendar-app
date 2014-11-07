@@ -87,7 +87,7 @@ filestocopy.forEach(function(obj) {
         var destfile = path.join(rootdir, val);
         //console.log("copying "+srcfile+" to "+destfile);
         var destdir = path.dirname(destfile);
-        if (fs.existsSync(srcfile) &amp;&amp; fs.existsSync(destdir)) {
+        if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
             fs.createReadStream(srcfile).pipe(
                fs.createWriteStream(destfile));
         }
