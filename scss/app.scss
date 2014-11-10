@@ -1,13 +1,18 @@
+body {
+    text-shadow:0 1px 1px #fff;
+}
+
 a {
     color: #226ba2;
 }
 
 .bar-header {
-    background: #3a2d72;
+    background: #0e0a1a url(/img/header.png) 50% 50% no-repeat;
     border-bottom: 1px solid #291c47;
     box-shadow:0 0 3px rgba(0, 0, 0, 0.5);
     h1 {
         color: #fff;
+        text-shadow:0 -1px 1px #0e0a1a;
     }
 }
 
@@ -21,7 +26,7 @@ a {
 }
 
 .card {
-    background:#fff;
+    background:#fefefe;
     padding:0;
     margin:1em;
     box-shadow:0 1px 3px rgba(0, 0, 0, 0.5);
@@ -119,18 +124,45 @@ a {
         }
 
         .hour {
-            background-color:#3a2d72;
+            background: #221946 url(/img/calendar.png) 50% 50% no-repeat;
             color: #fff;
+            text-shadow:0 -1px 1px #000;
             font-weight:bold;
         }
     }
 
     .today {
         background: #e9e3fa;
+        background: #221946 url(/img/calendar.png) 50% 50% no-repeat;
+        box-shadow:0 0 10px #261b43;
+
+        span {
+        color:#fff;
+        text-shadow:0 -1px 1px #000;
+        }
+
+        .hour {
+            background:rgba(255,255,255,.3);
+            font-color:#221946;
+            text-shadow:0 1px 1px #221946;
+        }
     }
 
     .name {
         padding-top: 1em;
+    }
+
+    .no-upcoming-events {
+        font-size: 20px;
+        color:#ccc;
+        margin: auto;
+        max-width:150px;
+        text-align:center;
+        margin-top:20%;
+
+        i {
+            font-size: 60px;
+        }
     }
 }
 

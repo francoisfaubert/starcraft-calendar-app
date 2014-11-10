@@ -56,7 +56,8 @@ angular.module('sccal', ['ionic'])
 
    $urlRouterProvider.otherwise("/results");
 })
-.controller('EventsController', function($scope, $http, $sce, $filter) {
+
+.controller('EventsController', function($scope, $http, $sce, $filter, $state) {
 
     if(typeof analytics !== "undefined") { analytics.trackView("/events"); }
 
@@ -110,13 +111,15 @@ angular.module('sccal', ['ionic'])
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
     //$scope.addToCalendar = addToCalendar;
+    $scope.goTo = function(section) { $state.go(section) };
     $scope.addMomentClass = addMomentClass;
     $scope.formatName = formatName;
     $scope.toLocalTime = toLocalTime;
 
     getRemoteItems();
 })
-.controller('SeriesController', function($scope, $http) {
+
+.controller('SeriesController', function($scope, $http, $state) {
     if(typeof analytics !== "undefined") { analytics.trackView("/scores"); }
 
     function getRemoteItems() {
@@ -133,9 +136,15 @@ angular.module('sccal', ['ionic'])
         return (score1 > score2) ? "winning" : "losing";
     };
 
+    $scope.goTo = function(section) { $state.go(section) };
     $scope.items = null;
     $scope.doRefresh = getRemoteItems;
     $scope.hasWon = hasWon;
 
     getRemoteItems();
+})
+
+.controller('AboutController', function($scope, $http, $state) {
+    if(typeof analytics !== "undefined") { analytics.trackView("/about"); }
+    $scope.goTo = function(section) { $state.go(section) };
 });

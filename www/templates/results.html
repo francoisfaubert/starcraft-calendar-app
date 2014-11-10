@@ -1,5 +1,5 @@
 <ion-view title="Recent Results">
-    <ion-content has-header="true" padding="true" ng-controller="SeriesController" class="results">
+    <ion-content has-header="true" padding="true" ng-controller="SeriesController" class="results" on-swipe-left="goTo('events')">
         <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
         <div class="card" ng-repeat="serie in series">
             <div class="row head">
